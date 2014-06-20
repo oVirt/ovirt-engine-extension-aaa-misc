@@ -1,0 +1,52 @@
+Authentication Based on HttpServletRequest
+==========================================
+
+This extension provides ability to authenticate using information stored
+in HttpServletRequest. It is useful when web SSO is used.
+
+CONFIGURATION
+-------------
+
+/etc/ovirt-enigne/extensions.d/http-authn.properties
+
+ovirt.engine.extension.name = @NAME@
+ovirt.engine.extension.bindings.method = jbossmodule
+ovirt.engine.extension.binding.jbossmodule.module = org.ovirt.engine-extensions.aaa.misc
+ovirt.engine.extension.binding.jbossmodule.class = org.ovirt.engineextensions.aaa.misc.http.AuthnExtension
+ovirt.engine.extension.provides = org.ovirt.engine.api.extensions.aaa.Authn
+ovirt.engine.aaa.authn.profile.name = @PROFILE_NAME@
+ovirt.engine.aaa.authn.authz.plugin = @AUTHZ_NAME@
+config.artifact.name = @ARTIFACT@
+config.artifact.arg = @ARTIFACT_ARG@
+
+@NAME@
+    Extension instance name.
+@PROFILE_NAME@
+    Authentication profile name.
+@AUTHZ_NAME@
+    Authorization extension name.
+@ARTIFACT@
+    PRINCIPAL
+        principal = request.getUserPrincipal().getName()
+    REMOTE_USER
+        principal = request.getRemoteUser()
+    HEADER
+        principal = request.getHeader(@ARTIFACT_ARG@)
+    ATTRIBUTE
+        principal = request.getAttribute(@ARTIFACT_ARG@)
+
+NOTES
+-----
+
+Due to accomulative bugs within JBoss HTTP connector, the principal is
+not always accepted by JBoss. A workaround is to use headers instead
+using mod_rewrite.
+
+Example:
+
+    <LocationMatch ^(/ovirt-engine/(webadmin|userportal|api)|/api)>
+        RewriteEngine on
+        RewriteCond %{LA-U:REMOTE_USER} ^(.*)$
+        RewriteRule ^(.*)$ - [L,P,E=REMOTE_USER:%1]
+        RequestHeader set X-Remote-User %{REMOTE_USER}s
+    </LocationMatch>

@@ -1,0 +1,44 @@
+Simple Mapping Implementation
+=============================
+
+Enable simple principal transformation.
+
+CONFIGURATION
+-------------
+
+/etc/ovirt-enigne/extensions.d/mapping1.properties
+
+ovirt.engine.extension.name = @NAME@
+ovirt.engine.extension.bindings.method = jbossmodule
+ovirt.engine.extension.binding.jbossmodule.module = org.ovirt.engine-extensions.aaa.misc
+ovirt.engine.extension.binding.jbossmodule.class = org.ovirt.engineextensions.aaa.misc.mapping.MappingExtension
+ovirt.engine.extension.provides = org.ovirt.engine.api.extensions.aaa.Authn
+ovirt.engine.aaa.authn.profile.name = @PROFILE_NAME@
+ovirt.engine.aaa.authn.authz.plugin = @AUTHZ_NAME@
+config.mapUser.type = regex
+config.mapUser.pattern = ^.*$
+config.mapUser.replacement = $0
+config.mapUser.mustMatch = false
+config.mapAuthRecord.type = regex
+config.mapAuthRecord.pattern = ^.*$
+config.mapAuthRecord.replacement = $0
+config.mapAuthRecord.mustMatch = false
+
+@NAME@
+    Extension instance name.
+@ARTIFACT@
+    PRINCIPAL
+        principal = request.getUserPrincipal().getName()
+    REMOTE_USER
+        principal = request.getRemoteUser()
+    HEADER
+        principal = request.getHeader(@ARTIFACT_ARG@)
+    ATTRIBUTE
+        principal = request.getAttribute(@ARTIFACT_ARG@)
+
+Reference from authentication extension, using:
+
+ovirt.engine.aaa.authn.mapping.plugin = @NAME@
+
+mapUser happens after user submits login form.
+mapAuthRecord happens before principal is fetched from directory.
