@@ -30,7 +30,6 @@ BuildRequires:	%{servlet_api}
 BuildRequires:	%{slf4j} >= 1.7
 BuildRequires:	ant
 BuildRequires:	java-1.7.0-openjdk-devel
-BuildRequires:	jboss-servlet-3.0-api
 BuildRequires:	jpackage-utils
 BuildRequires:	ovirt-engine-extensions-api
 
@@ -45,8 +44,8 @@ Misc aaa extension for oVirt engine.
 %build
 cat > build.properties << __EOF__
 package.display.name=%{name}-%{version}-%{release}
-jar.slf4j-api=$(build-classpath %{slf4j} slf4j-api)
-jar.servlet-api=$(build-classpath tomcat-servlet-api)
+jar.slf4j-api=$(build-classpath %{slf4j}/slf4j-api.jar)
+jar.servlet-api=$(build-classpath %{servlet_api})
 jar.ovirt-engine-extensions-api=$(build-classpath ovirt-engine/ovirt-engine-extensions-api)
 __EOF__
 
