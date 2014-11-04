@@ -1,4 +1,6 @@
 %if 0%{?rhel}
+%if 0%{?rhel} < 7
+%global java_devel java7-devel
 %global servlet_api tomcat6-servlet-2.5-api
 %if 0%{?centos}
 %global slf4j slf4j
@@ -6,6 +8,14 @@
 %global slf4j slf4j-eap6
 %endif
 %else
+%global java_devel java-devel >= 1.7.0
+%global servlet_api tomcat-servlet-3.0-api
+%global slf4j slf4j
+%endif
+%endif
+
+%if 0%{?fedora}
+%global java_devel java-devel >= 1.7.0
 %global slf4j slf4j
 %global servlet_api tomcat-servlet-3.0-api
 %endif
@@ -26,12 +36,7 @@ URL:		http://www.ovirt.org
 BuildArch:	noarch
 Source:		http://resources.ovirt.org/pub/src/%{name}/%{name}-@PACKAGE_VERSION@.tar.gz
 
-%if 0%{?rhel}
-BuildRequires:	java7-devel
-%endif
-%if 0%{?fedora}
-BuildRequires:	java-devel >= 1.7.0
-%endif
+BuildRequires:	%{java_devel}
 BuildRequires:	%{servlet_api}
 BuildRequires:	%{slf4j} >= 1.7
 BuildRequires:	ant
