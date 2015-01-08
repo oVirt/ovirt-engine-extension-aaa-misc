@@ -6,7 +6,7 @@ Enable simple principal transformation.
 CONFIGURATION
 -------------
 
-/etc/ovirt-enigne/extensions.d/mapping1.properties
+/etc/ovirt-engine/extensions.d/mapping1.properties
 
 ovirt.engine.extension.name = @NAME@
 ovirt.engine.extension.bindings.method = jbossmodule

@@ -7,7 +7,7 @@ in HttpServletRequest. It is useful when web SSO is used.
 CONFIGURATION
 -------------
 
-/etc/ovirt-enigne/extensions.d/http-authn.properties
+/etc/ovirt-engine/extensions.d/http-authn.properties
 
 ovirt.engine.extension.name = @NAME@
 ovirt.engine.extension.bindings.method = jbossmodule
