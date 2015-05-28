@@ -147,6 +147,8 @@
 		<chmod
 			dir="${dir.destdir}${dir.pkgdata}"
 			perm="u=rwX,go=rX"
+			type="both"
+			includes="**"
 		/>
 		<copy
 			file="${build.output}/engine.conf"
