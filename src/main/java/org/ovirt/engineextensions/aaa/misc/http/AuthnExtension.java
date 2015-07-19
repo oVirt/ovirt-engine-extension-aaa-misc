@@ -150,11 +150,7 @@ public class AuthnExtension implements Extension {
             )
         );
 
-        String artifactName = configuration.getProperty("config.artifact.name", Artifact.PRINCIPAL.toString());
-        artifact = Artifact.valueOf(artifactName);
-        if (artifact == null) {
-            throw new IllegalArgumentException("Unsupported artifact " + artifactName);
-        }
+        artifact = Artifact.valueOf(configuration.getProperty("config.artifact.name", Artifact.PRINCIPAL.toString()));
         artifactArg = configuration.getProperty("config.artifact.arg");
     }
 
