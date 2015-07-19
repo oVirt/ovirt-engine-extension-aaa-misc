@@ -2,6 +2,7 @@ oVirt Misc authentication and authorization extension
 
 ????-??-?? - Version 1.0.1
 
+ * Add environment method.
 
 2014-12-01 - Version 1.0.0
 

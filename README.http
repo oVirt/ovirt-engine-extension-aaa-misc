@@ -34,6 +34,8 @@ config.artifact.arg = @ARTIFACT_ARG@
         principal = request.getHeader(@ARTIFACT_ARG@)
     ATTRIBUTE
         principal = request.getAttribute(@ARTIFACT_ARG@)
+    ENVIRONMENT
+        principal = System.getenv(@ARTIFACT_ARG@)
 
 NOTES
 -----

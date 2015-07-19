@@ -57,6 +57,13 @@ public class AuthnExtension implements Extension {
                     return request.getAttribute(arg).toString();
                 }
             }
+        ),
+        ENVIRONMENT(
+            new Format() {
+                public String getPrincipal(HttpServletRequest request, String arg) {
+                    return System.getenv(arg);
+                }
+            }
         );
 
         private interface Format {
