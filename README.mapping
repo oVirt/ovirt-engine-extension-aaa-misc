@@ -12,9 +12,7 @@ ovirt.engine.extension.name = @NAME@
 ovirt.engine.extension.bindings.method = jbossmodule
 ovirt.engine.extension.binding.jbossmodule.module = org.ovirt.engine-extensions.aaa.misc
 ovirt.engine.extension.binding.jbossmodule.class = org.ovirt.engineextensions.aaa.misc.mapping.MappingExtension
-ovirt.engine.extension.provides = org.ovirt.engine.api.extensions.aaa.Authn
-ovirt.engine.aaa.authn.profile.name = @PROFILE_NAME@
-ovirt.engine.aaa.authn.authz.plugin = @AUTHZ_NAME@
+ovirt.engine.extension.provides = org.ovirt.engine.api.extensions.aaa.Mapping
 config.mapUser.type = regex
 config.mapUser.pattern = ^.*$
 config.mapUser.replacement = $0
@@ -23,6 +21,9 @@ config.mapAuthRecord.type = regex
 config.mapAuthRecord.pattern = ^.*$
 config.mapAuthRecord.replacement = $0
 config.mapAuthRecord.mustMatch = false
+
+mapUser happens after user submits login form.
+mapAuthRecord happens before principal is fetched from directory.
 
 @NAME@
     Extension instance name.
@@ -36,9 +37,8 @@ config.mapAuthRecord.mustMatch = false
     ATTRIBUTE
         principal = request.getAttribute(@ARTIFACT_ARG@)
 
-Reference from authentication extension, using:
+Defaults do not change values.
+
+Reference from authentication extension, using, @NAME@ is the name of the mapping extension:
 
 ovirt.engine.aaa.authn.mapping.plugin = @NAME@
-
-mapUser happens after user submits login form.
-mapAuthRecord happens before principal is fetched from directory.
