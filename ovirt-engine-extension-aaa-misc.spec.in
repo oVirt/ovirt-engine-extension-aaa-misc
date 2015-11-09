@@ -17,7 +17,11 @@
 %if 0%{?fedora}
 %global java_devel java-devel >= 1.7.0
 %global slf4j slf4j
+%if 0%{?fedora} < 23
 %global servlet_api tomcat-servlet-3.0-api
+%else
+%global servlet_api tomcat-servlet-3.1-api
+%endif
 %endif
 
 %global make_common_opts \\\
