@@ -18,6 +18,7 @@ package org.ovirt.engine.extension.aaa.misc.mapping;
 
 import java.io.*;
 import java.util.*;
+import java.util.function.Function;
 import java.util.regex.*;
 import javax.servlet.http.*;
 
@@ -29,6 +30,21 @@ import org.ovirt.engine.api.extensions.aaa.*;
 import org.ovirt.engine.extension.aaa.misc.*;
 
 public class MappingExtension implements Extension {
+    
+    private enum ChangeCase {
+        LOWER(String::toLowerCase),
+        UPPER(String::toUpperCase),
+        KEEP(Function.identity());
+
+        private final Function<String, String> transformer;
+        ChangeCase(Function<String, String> transformer) {
+            this.transformer = transformer;
+        }
+
+        String transform(String value) {
+            return Optional.ofNullable(value).map(transformer).orElse((String)null);
+        }
+    }
 
     private interface Format {
         String format(String s);
@@ -44,11 +60,15 @@ public class MappingExtension implements Extension {
         private final Pattern pattern;
         private final String replacement;
         private final boolean mustMatch;
+        private final ChangeCase changeCase;
 
         public RegExFormat(Properties props, String prefix) {
             pattern = Pattern.compile(props.getProperty(prefix + "pattern", "^.*$"));
             replacement = props.getProperty(prefix + "replacement", "$0");
             mustMatch = Boolean.valueOf(props.getProperty(prefix + "mustMatch", "false"));
+            changeCase = Optional.ofNullable(props.getProperty(prefix + "case"))
+                                 .map(ChangeCase::valueOf)
+                                 .orElse(ChangeCase.KEEP);
         }
 
         public String format(String s) {
@@ -67,7 +87,7 @@ public class MappingExtension implements Extension {
             } else {
                 ret = matcher.replaceFirst(replacement);
             }
-            return ret;
+            return changeCase.transform(ret);
         }
     }
 
