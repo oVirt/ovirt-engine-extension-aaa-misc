@@ -32,7 +32,7 @@
 	%{nil}
 Name:		@PACKAGE_NAME@
 Version:	@RPM_VERSION@
-Release:	@RPM_RELEASE@%{?release_suffix}%{?dist}
+Release:	@RPM_RELEASE@%{?dist}
 License:	ASL 2.0
 Summary:	oVirt Script Engine Gateway Extension
 Group:		Virtualization/Management
@@ -75,5 +75,9 @@ make %{make_common_opts} install-no-build DESTDIR="%{buildroot}"
 %{_sysconfdir}/ovirt-engine/engine.conf.d/50-%{name}.conf
 
 %changelog
+* Tue May 24 2016 Martin Perina <mperina@redhat.com> 1.0.1-1
+- Fixed various build issues
+- Fixed documentation typos and issues
+
 * Mon Dec 1 2014 Alon Bar-Lev <alonbl@redhat.com> 1.0.0-1
 - Initial.
