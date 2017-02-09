@@ -4,3 +4,12 @@ output/
 
 build.properties
 ovirt-engine-extension-aaa-misc.spec
+
+*.tar.gz
+
+*.iml
+.idea
+
+.bash_history
+exported-artifacts
+mocker*.cfg
