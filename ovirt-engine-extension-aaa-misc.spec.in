@@ -32,7 +32,7 @@
 	%{nil}
 Name:		@PACKAGE_NAME@
 Version:	@RPM_VERSION@
-Release:	@RPM_RELEASE@%{?release_suffix}%{?dist}
+Release:	@RPM_RELEASE@%{?dist}
 License:	ASL 2.0
 Summary:	oVirt Script Engine Gateway Extension
 Group:		Virtualization/Management
@@ -75,6 +75,11 @@ make %{make_common_opts} install-no-build DESTDIR="%{buildroot}"
 %{_sysconfdir}/ovirt-engine/engine.conf.d/50-%{name}.conf
 
 %changelog
+* Fri Nov 23 2018 Martin Perina <mperina@redhat.com> 1.0.2-1
+- Add AuthzExtension to get information from headers
+- Fixed Fedora packaging
+- Switched to oVirt STDCIv2
+
 * Tue May 24 2016 Martin Perina <mperina@redhat.com> 1.0.1-1
 - Fixed various build issues
 - Fixed documentation typos and issues
