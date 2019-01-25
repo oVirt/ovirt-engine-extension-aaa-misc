@@ -17,6 +17,7 @@ config.mapUser.type = regex
 config.mapUser.regex.pattern = ^.*$
 config.mapUser.regex.replacement = $0
 config.mapUser.regex.mustMatch = false
+config.mapUser.case = lower
 config.mapAuthRecord.type = regex
 config.mapAuthRecord.regex.pattern = ^.*$
 config.mapAuthRecord.regex.replacement = $0

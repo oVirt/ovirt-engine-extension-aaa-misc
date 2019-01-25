@@ -29,6 +29,28 @@ import org.ovirt.engine.api.extensions.aaa.*;
 import org.ovirt.engineextensions.aaa.misc.*;
 
 public class MappingExtension implements Extension {
+    
+    private enum ChangeCase {
+        TOLOWER {
+            @Override
+            String transform(String value) {
+                return value.toLowerCase();
+            }
+        },
+        TOUPPER {
+            @Override
+            String transform(String value) {
+                return value.toUpperCase();
+            }
+        },
+        KEEP {
+            @Override
+            String transform(String value) {
+                return value;
+            }
+        };
+        abstract String transform(String value);
+    }
 
     private interface Format {
         String format(String s);
@@ -44,11 +66,13 @@ public class MappingExtension implements Extension {
         private final Pattern pattern;
         private final String replacement;
         private final boolean mustMatch;
+        private final ChangeCase changecase;
 
-        public RegExFormat(Properties props, String prefix) {
+        public RegExFormat(Properties props, String prefix, ChangeCase changecase) {
             pattern = Pattern.compile(props.getProperty(prefix + "pattern", "^.*$"));
             replacement = props.getProperty(prefix + "replacement", "$0");
             mustMatch = Boolean.valueOf(props.getProperty(prefix + "mustMatch", "false"));
+            this.changecase = changecase;
         }
 
         public String format(String s) {
@@ -67,7 +91,7 @@ public class MappingExtension implements Extension {
             } else {
                 ret = matcher.replaceFirst(replacement);
             }
-            return ret;
+            return changecase.transform(ret);
         }
     }
 
@@ -186,10 +210,19 @@ public class MappingExtension implements Extension {
     private Format createFormat(Properties props, String prefix) {
         Format ret = null;
         String type = props.getProperty(prefix + "type", "void");
+        String newcase = props.getProperty(prefix + "case", "").toLowerCase();
+        ChangeCase changecase;
+        if("lower".equals(newcase)) {
+            changecase = ChangeCase.TOLOWER;
+        } else if ("upper".equals(newcase)){
+            changecase = ChangeCase.TOUPPER;
+        } else {
+            changecase = ChangeCase.KEEP;
+        }
         if ("void".equals(type)) {
             ret = new VoidFormat();
         } else if ("regex".equals(type)) {
-            ret = new RegExFormat(props, prefix + type + ".");
+            ret = new RegExFormat(props, prefix + type + ".", changecase);
         } else {
             new IllegalArgumentException(
                 String.format(
