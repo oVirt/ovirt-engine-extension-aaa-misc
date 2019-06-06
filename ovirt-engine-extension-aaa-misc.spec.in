@@ -1,27 +1,7 @@
-%if 0%{?rhel}
-%if 0%{?rhel} < 7
-%global java_devel java7-devel
-%global servlet_api tomcat6-servlet-2.5-api
-%if 0%{?centos}
-%global slf4j slf4j
-%else
-%global slf4j slf4j-eap6
-%endif
-%else
-%global java_devel java-devel >= 1.7.0
-%global servlet_api tomcat-servlet-3.0-api
-%global slf4j slf4j
-%endif
-%endif
-
 %if 0%{?fedora}
-%global java_devel java-devel >= 1.7.0
-%global slf4j slf4j
-%if 0%{?fedora} < 23
-%global servlet_api tomcat-servlet-3.0-api
+%global servlet_api jboss-servlet-3.1-api
 %else
-%global servlet_api tomcat-servlet-3.1-api
-%endif
+%global servlet_api tomcat-servlet-3.0-api
 %endif
 
 %global make_common_opts \\\
@@ -40,12 +20,12 @@ URL:		http://www.ovirt.org
 BuildArch:	noarch
 Source:		http://resources.ovirt.org/pub/src/%{name}/%{name}-@PACKAGE_VERSION@.tar.gz
 
-BuildRequires:	%{java_devel}
-BuildRequires:	%{servlet_api}
-BuildRequires:	%{slf4j} >= 1.7
+BuildRequires:	java-1.8.0-openjdk-devel >= 1.8.0
 BuildRequires:	ant
-BuildRequires:	jpackage-utils
+BuildRequires:	javapackages-tools
 BuildRequires:	ovirt-engine-extensions-api
+BuildRequires:	slf4j >= 1.7
+BuildRequires:	%{servlet_api}
 
 Requires:	ovirt-engine >= 3.5
 
@@ -58,7 +38,7 @@ Misc aaa extension for oVirt engine.
 %build
 cat > build.properties << __EOF__
 package.display.name=%{name}-%{version}-%{release}
-jar.slf4j-api=$(build-classpath %{slf4j}/slf4j-api.jar)
+jar.slf4j-api=$(build-classpath slf4j/slf4j-api.jar)
 jar.servlet-api=$(build-classpath %{servlet_api})
 jar.ovirt-engine-extensions-api=$(build-classpath ovirt-engine/ovirt-engine-extensions-api)
 __EOF__
