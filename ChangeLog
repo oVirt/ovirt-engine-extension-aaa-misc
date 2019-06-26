@@ -1,5 +1,7 @@
 oVirt Misc authentication and authorization extension
 
+????-??-?? - Version 1.0.4
+
 2019-06-26 - Version 1.0.3
  * Fix FC29 and remove support for EL6
 
