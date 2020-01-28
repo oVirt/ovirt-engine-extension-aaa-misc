@@ -1,5 +1,7 @@
 oVirt Misc authentication and authorization extension
 
+????-??-?? - Version 1.0.5
+
 2020-01-28 - Version 1.0.4
  * Add AuthzExtension to get information from headers - it was not
  cherrypicked to stable branch in 1.0.2 by an error
