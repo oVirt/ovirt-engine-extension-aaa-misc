@@ -12,7 +12,7 @@
 	%{nil}
 Name:		@PACKAGE_NAME@
 Version:	@RPM_VERSION@
-Release:	@RPM_RELEASE@%{?release_suffix}%{?dist}
+Release:	@RPM_RELEASE@%{?dist}
 License:	ASL 2.0
 Summary:	oVirt Script Engine Gateway Extension
 Group:		Virtualization/Management
@@ -55,6 +55,9 @@ make %{make_common_opts} install-no-build DESTDIR="%{buildroot}"
 %{_sysconfdir}/ovirt-engine/engine.conf.d/50-%{name}.conf
 
 %changelog
+* Tue Jan 28 2020 Martin Perina <mperina@redhat.com> 1.0.4-1
+- Add AuthzExtension to get information from headers - truly added
+
 * Wed Jun 26 2019 Martin Perina <mperina@redhat.com> 1.0.3-1
 - Fix FC29 and remove support for EL6
 

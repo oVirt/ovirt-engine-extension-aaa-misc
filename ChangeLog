@@ -1,6 +1,8 @@
 oVirt Misc authentication and authorization extension
 
-????-??-?? - Version 1.0.4
+2020-01-28 - Version 1.0.4
+ * Add AuthzExtension to get information from headers - it was not
+ cherrypicked to stable branch in 1.0.2 by an error
 
 2019-06-26 - Version 1.0.3
  * Fix FC29 and remove support for EL6
