@@ -71,6 +71,11 @@ make %{make_common_opts} install
 
 
 %changelog
+* Fri Feb 28 2020 Martin Perina <mperina@redhat.com> 1.1.0-1
+- Moved java classes under org.ovirt.engine.extension.aaa.misc package
+- Require OpenJDK 11
+- Use maven to build the project
+
 * Wed Jun 26 2019 Martin Perina <mperina@redhat.com> 1.0.3-1
 - Fix FC29 and remove support for EL6
 
