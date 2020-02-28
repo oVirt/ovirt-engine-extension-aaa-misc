@@ -14,7 +14,7 @@
  *     limitations under the License.
  *
  */
-package org.ovirt.engineextensions.aaa.misc;
+package org.ovirt.engine.extension.aaa.misc;
 
 import java.io.IOException;
 import java.io.InputStream;

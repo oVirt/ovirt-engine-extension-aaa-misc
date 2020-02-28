@@ -14,7 +14,7 @@
  *     limitations under the License.
  *
  */
-package org.ovirt.engineextensions.aaa.misc.http;
+package org.ovirt.engine.extension.aaa.misc.http;
 
 import java.io.*;
 import java.util.*;
@@ -25,7 +25,7 @@ import org.slf4j.*;
 import org.ovirt.engine.api.extensions.*;
 import org.ovirt.engine.api.extensions.aaa.*;
 
-import org.ovirt.engineextensions.aaa.misc.*;
+import org.ovirt.engine.extension.aaa.misc.*;
 
 public class AuthnExtension implements Extension {
 

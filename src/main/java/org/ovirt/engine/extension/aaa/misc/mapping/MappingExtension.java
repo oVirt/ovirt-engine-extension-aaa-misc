@@ -14,7 +14,7 @@
  *     limitations under the License.
  *
  */
-package org.ovirt.engineextensions.aaa.misc.mapping;
+package org.ovirt.engine.extension.aaa.misc.mapping;
 
 import java.io.*;
 import java.util.*;
@@ -26,7 +26,7 @@ import org.slf4j.*;
 import org.ovirt.engine.api.extensions.*;
 import org.ovirt.engine.api.extensions.aaa.*;
 
-import org.ovirt.engineextensions.aaa.misc.*;
+import org.ovirt.engine.extension.aaa.misc.*;
 
 public class MappingExtension implements Extension {
 

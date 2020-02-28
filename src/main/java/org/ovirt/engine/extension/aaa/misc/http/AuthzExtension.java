@@ -14,7 +14,7 @@
  *     limitations under the License.
  *
  */
-package org.ovirt.engineextensions.aaa.misc.http;
+package org.ovirt.engine.extension.aaa.misc.http;
 
 import static org.ovirt.engine.api.extensions.aaa.Authz.QueryFilterOperator;
 
@@ -36,8 +36,8 @@ import org.ovirt.engine.api.extensions.ExtMap;
 import org.ovirt.engine.api.extensions.ExtUUID;
 import org.ovirt.engine.api.extensions.Extension;
 import org.ovirt.engine.api.extensions.aaa.Authz;
-import org.ovirt.engineextensions.aaa.misc.Config;
-import org.ovirt.engineextensions.aaa.misc.QueryExecutor;
+import org.ovirt.engine.extension.aaa.misc.Config;
+import org.ovirt.engine.extension.aaa.misc.QueryExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
