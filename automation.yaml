@@ -1,0 +1,4 @@
+distros:
+  - el7
+release_branches:
+  ovirt-engine-extension-aaa-misc-1.0: ovirt-4.3
