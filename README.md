@@ -1,5 +1,7 @@
 # oVirt Engine AAA Misc Extension
 
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/ovirt-engine-extension-aaa-misc/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/ovirt-engine-extension-aaa-misc/)
+
 Welcome to the oVirt Engine AAA Misc Extension source repository.
 
 This repository is hosted on [gerrit.ovirt.org:ovirt-engine-extension-aaa-misc](https://gerrit.ovirt.org/#/admin/projects/ovirt-engine-extension-aaa-misc)
