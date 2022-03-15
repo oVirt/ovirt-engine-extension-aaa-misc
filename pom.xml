@@ -44,9 +44,9 @@
   </developers>
 
   <scm>
-    <connection>scm:git:git://gerrit.ovirt.org/ovirt-engine-extension-aaa-misc.git</connection>
-    <developerConnection>scm:git:git://gerrit.ovirt.org/ovirt-engine-extension-aaa-misc.git</developerConnection>
-    <url>git://gerrit.ovirt.org/ovirt-engine-extension-aaa-misc.git</url>
+    <url>https://github.com/oVirt/ovirt-engine-extension-aaa-misc</url>
+    <connection>scm:git:https://github.com/oVirt/ovirt-engine-extension-aaa-misc.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:oVirt/ovirt-engine-extension-aaa-misc.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
