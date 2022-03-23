@@ -17,6 +17,7 @@ config.mapUser.type = regex
 config.mapUser.regex.pattern = ^.*$
 config.mapUser.regex.replacement = $0
 config.mapUser.regex.mustMatch = false
+config.mapUser.regex.case = keep
 config.mapAuthRecord.type = regex
 config.mapAuthRecord.regex.pattern = ^.*$
 config.mapAuthRecord.regex.replacement = $0
@@ -24,6 +25,7 @@ config.mapAuthRecord.regex.mustMatch = false
 
 mapUser happens after user submits login form.
 mapAuthRecord happens before principal is fetched from directory.
+case can take the value lower, upper, or keep.
 
 @NAME@
     Extension instance name.
