@@ -72,6 +72,9 @@ make %{make_common_opts} install
 
 
 %changelog
+* Thu Apr 07 2022 Martin Perina <mperina@redhat.com> 1.1.1-1
+- Allow mapping to transform to upper case or lower case
+
 * Fri Feb 28 2020 Martin Perina <mperina@redhat.com> 1.1.0-1
 - Moved java classes under org.ovirt.engine.extension.aaa.misc package
 - Require OpenJDK 11

@@ -11,7 +11,7 @@
 
   <groupId>org.ovirt.engine</groupId>
   <artifactId>ovirt-engine-extension-aaa-misc</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.1.1</version>
 
   <name>oVirt Engine AAA Misc Extension</name>
   <description>
@@ -47,7 +47,7 @@
     <url>https://github.com/oVirt/ovirt-engine-extension-aaa-misc</url>
     <connection>scm:git:https://github.com/oVirt/ovirt-engine-extension-aaa-misc.git</connection>
     <developerConnection>scm:git:ssh://git@github.com:oVirt/ovirt-engine-extension-aaa-misc.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>ovirt-engine-extension-aaa-misc-1.1.1</tag>
   </scm>
 
   <properties>
