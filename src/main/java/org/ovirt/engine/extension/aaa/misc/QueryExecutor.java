@@ -93,8 +93,14 @@ public class QueryExecutor {
     }
 
     public Collection<ExtMap> buildPrincipalRecordGroups(Map<String, String> headers, String groupsArg) {
+        List<String> groupNames;
+        if (headers.containsKey(groupsArg)) {
+            groupNames = Arrays.asList(headers.get(groupsArg).split(","));
+        } else {
+            return Collections.emptyList();
+        }
+
         LinkedList<ExtMap> groups = new LinkedList<>();
-        List<String> groupNames = Arrays.asList(headers.get(groupsArg).split(","));
         for (String groupName : groupNames) {
             groupName = groupName.replaceFirst("^/", "");
             ExtMap group = new ExtMap();
