@@ -43,6 +43,9 @@ features necessary for example to Kerberos or OpenID Connect integrations.
 %prep
 %setup -c -q
 
+# maven-release-plugin is not used during package build, so we can remove it
+# from pom.xml
+%pom_remove_plugin :maven-release-plugin pom.xml
 
 %build
 
