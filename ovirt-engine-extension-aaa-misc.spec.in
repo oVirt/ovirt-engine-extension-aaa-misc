@@ -67,6 +67,11 @@ make %{make_common_opts} install
 
 
 %changelog
+* Fri Oct 17 2025 Jean-Louis Dupond <jean-louis@dupond.be> - 1.1.2-1
+- Handle empty groups from Keycloak
+- Build on Java 21
+- Add build for CentOS 10
+
 * Thu Apr 07 2022 Martin Perina <mperina@redhat.com> 1.1.1-1
 - Allow mapping to transform to upper case or lower case
 
